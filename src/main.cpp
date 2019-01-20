@@ -1,7 +1,8 @@
 #include "main.h"
 #include "timer.h"
-#include "ball.h"
-
+#include "ground.h"
+#include "coin.h"
+#include "player.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -12,8 +13,9 @@ GLFWwindow *window;
 * Customizable functions *
 **************************/
 
-Ball ball1;
-
+Ground ground;
+Player player;
+vector <Coin> coins;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 
@@ -30,7 +32,8 @@ void draw() {
     glUseProgram (programID);
 
     // Eye - Location of camera. Don't change unless you are sure!!
-    glm::vec3 eye ( 5*cos(camera_rotation_angle*M_PI/180.0f), 0, 5*sin(camera_rotation_angle*M_PI/180.0f) );
+    //glm::vec3 eye ( 5*cos(camera_rotation_angle*M_PI/180.0f), 0, 5*sin(camera_rotation_angle*M_PI/180.0f) );
+    glm::vec3 eye(0, 0, 5);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (0, 0, 0);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
@@ -51,19 +54,38 @@ void draw() {
     glm::mat4 MVP;  // MVP = Projection * View * Model
 
     // Scene render
-    ball1.draw(VP);
+    ground.draw(VP);
+    player.draw(VP);
+    for(int i = 0; i < coins.size(); ++i)
+        coins[i].draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
+    int space = glfwGetKey(window, GLFW_KEY_SPACE);
+    float delta_x = 0.0f;
+    float delta_y = 0.0f;
     if (left) {
         // Do something
+        delta_x = 0.025;
     }
+    if(right)
+    {
+        delta_x = -0.025;
+    }
+    if(space){
+    }
+    ground.set_position(ground.position.x + delta_x, ground.position.y);
+    for(int i = 0; i < coins.size(); ++i)
+        coins[i].set_position(coins[i].position.x + delta_x, coins[i].position.y);
 }
 
 void tick_elements() {
-    ball1.tick();
+    ground.tick();
+    for(int i = 0; i < coins.size(); ++i)
+        coins[i].tick();
+    player.tick();
     camera_rotation_angle += 1;
 }
 
@@ -73,8 +95,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    ball1       = Ball(0, 0, COLOR_RED);
-
+    ground       = Ground(-4, -3, COLOR_BLACK, 3, 100);
+    player = Player(-4, -2, COLOR_GREEN);
+    coins.push_back(Coin(0, 0, COLOR_RED, 0.2));
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -99,8 +122,8 @@ void initGL(GLFWwindow *window, int width, int height) {
 
 int main(int argc, char **argv) {
     srand(time(0));
-    int width  = 600;
-    int height = 600;
+    int width  = 800;
+    int height = 800;
 
     window = initGLFW(width, height);
 

@@ -13,6 +13,7 @@ public:
     float breadth;
     float rotation;
     void draw(glm::mat4 VP);
+    bool detect_collision_with_ground();
     void set_position(float x, float y);
     void tick();
     double speed;

@@ -3,6 +3,7 @@
 #include "ground.h"
 #include "coin.h"
 #include "player.h"
+#include "global.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -54,8 +55,9 @@ void draw() {
     glm::mat4 MVP;  // MVP = Projection * View * Model
 
     // Scene render
-    ground.draw(VP);
+    
     player.draw(VP);
+    ground.draw(VP);
     for(int i = 0; i < coins.size(); ++i)
         coins[i].draw(VP);
 }
@@ -68,13 +70,23 @@ void tick_input(GLFWwindow *window) {
     float delta_y = 0.0f;
     if (left) {
         // Do something
-        delta_x = 0.025;
+        if(player.position.x >= -4)
+            player.set_position(player.position.x - 0.025, player.position.y);
     }
     if(right)
     {
-        delta_x = -0.025;
+        if(player.position.x >= -2)
+            delta_x = -0.025;
+        else{
+            player.set_position(player.position.x + 0.025, player.position.y);
+        }
     }
     if(space){
+        player.speed = 0.05;
+    }
+    else if(player.detect_collision_with_ground() == true)
+    {
+        player.speed = 0.0f;
     }
     ground.set_position(ground.position.x + delta_x, ground.position.y);
     for(int i = 0; i < coins.size(); ++i)
@@ -85,6 +97,12 @@ void tick_elements() {
     ground.tick();
     for(int i = 0; i < coins.size(); ++i)
         coins[i].tick();
+    for(int i = 0; i < coins.size(); ++i){
+        if(detect_collision_with_coin(coins[i], player)){
+            coins.erase(coins.begin() + i);
+            i = i - 1;
+        }
+    }
     player.tick();
     camera_rotation_angle += 1;
 }
@@ -155,7 +173,12 @@ bool detect_collision(bounding_box_t a, bounding_box_t b) {
     return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
            (abs(a.y - b.y) * 2 < (a.height + b.height));
 }
-
+bool detect_collision_with_coin(Coin c, Player p)
+{
+    float DeltaX = c.position.x - max(p.position.x, min(c.position.x, p.position.x + p.breadth));
+    float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
+    return (DeltaX * DeltaX + DeltaY * DeltaY) < (c.radius * c.radius);
+}
 void reset_screen() {
     float top    = screen_center_y + 4 / screen_zoom;
     float bottom = screen_center_y - 4 / screen_zoom;

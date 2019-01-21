@@ -19,7 +19,6 @@ struct color_t {
     int g;
     int b;
 };
-
 // nonedit.cpp
 GLFWwindow *initGLFW(int width, int height);
 GLuint     LoadShaders(const char *vertex_file_path, const char *fragment_file_path);
@@ -72,7 +71,6 @@ struct bounding_box_t {
 };
 
 bool detect_collision(bounding_box_t a, bounding_box_t b);
-
 extern float screen_zoom, screen_center_x, screen_center_y;
 void reset_screen();
 
@@ -81,5 +79,7 @@ extern const color_t COLOR_RED;
 extern const color_t COLOR_GREEN;
 extern const color_t COLOR_BLACK;
 extern const color_t COLOR_BACKGROUND;
-
+#include "player.h"
+#include "coin.h"
+bool detect_collision_with_coin(Coin c, Player p);
 #endif

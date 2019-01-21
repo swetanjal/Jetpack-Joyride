@@ -30,6 +30,10 @@ main.h
 main.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
 
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/global.h
+ground.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
+
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.cpp
 ground.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
@@ -73,6 +77,8 @@ coin.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
 player.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
+global.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/global.h
 
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
 iostream
@@ -93,6 +99,10 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+player.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
+coin.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
 
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/nonedit.cpp
 iostream
@@ -143,6 +153,8 @@ player.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
 main.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
+global.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/global.h
 
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
 main.h

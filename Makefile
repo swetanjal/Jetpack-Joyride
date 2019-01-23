@@ -204,6 +204,60 @@ src/color.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
+src/enemy1.o: src/enemy1.cpp.o
+
+.PHONY : src/enemy1.o
+
+# target to build an object file
+src/enemy1.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o
+.PHONY : src/enemy1.cpp.o
+
+src/enemy1.i: src/enemy1.cpp.i
+
+.PHONY : src/enemy1.i
+
+# target to preprocess a source file
+src/enemy1.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.i
+.PHONY : src/enemy1.cpp.i
+
+src/enemy1.s: src/enemy1.cpp.s
+
+.PHONY : src/enemy1.s
+
+# target to generate assembly for a file
+src/enemy1.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.s
+.PHONY : src/enemy1.cpp.s
+
+src/enemy2.o: src/enemy2.cpp.o
+
+.PHONY : src/enemy2.o
+
+# target to build an object file
+src/enemy2.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o
+.PHONY : src/enemy2.cpp.o
+
+src/enemy2.i: src/enemy2.cpp.i
+
+.PHONY : src/enemy2.i
+
+# target to preprocess a source file
+src/enemy2.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.i
+.PHONY : src/enemy2.cpp.i
+
+src/enemy2.s: src/enemy2.cpp.s
+
+.PHONY : src/enemy2.s
+
+# target to generate assembly for a file
+src/enemy2.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.s
+.PHONY : src/enemy2.cpp.s
+
 src/ground.o: src/ground.cpp.o
 
 .PHONY : src/ground.o
@@ -257,6 +311,33 @@ src/input.s: src/input.cpp.s
 src/input.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/input.cpp.s
 .PHONY : src/input.cpp.s
+
+src/lives.o: src/lives.cpp.o
+
+.PHONY : src/lives.o
+
+# target to build an object file
+src/lives.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o
+.PHONY : src/lives.cpp.o
+
+src/lives.i: src/lives.cpp.i
+
+.PHONY : src/lives.i
+
+# target to preprocess a source file
+src/lives.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/lives.cpp.i
+.PHONY : src/lives.cpp.i
+
+src/lives.s: src/lives.cpp.s
+
+.PHONY : src/lives.s
+
+# target to generate assembly for a file
+src/lives.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/lives.cpp.s
+.PHONY : src/lives.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -366,6 +447,33 @@ src/player.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
+src/propulsion.o: src/propulsion.cpp.o
+
+.PHONY : src/propulsion.o
+
+# target to build an object file
+src/propulsion.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o
+.PHONY : src/propulsion.cpp.o
+
+src/propulsion.i: src/propulsion.cpp.i
+
+.PHONY : src/propulsion.i
+
+# target to preprocess a source file
+src/propulsion.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.i
+.PHONY : src/propulsion.cpp.i
+
+src/propulsion.s: src/propulsion.cpp.s
+
+.PHONY : src/propulsion.s
+
+# target to generate assembly for a file
+src/propulsion.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.s
+.PHONY : src/propulsion.cpp.s
+
 src/timer.o: src/timer.cpp.o
 
 .PHONY : src/timer.o
@@ -411,12 +519,21 @@ help:
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/enemy1.o"
+	@echo "... src/enemy1.i"
+	@echo "... src/enemy1.s"
+	@echo "... src/enemy2.o"
+	@echo "... src/enemy2.i"
+	@echo "... src/enemy2.s"
 	@echo "... src/ground.o"
 	@echo "... src/ground.i"
 	@echo "... src/ground.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
+	@echo "... src/lives.o"
+	@echo "... src/lives.i"
+	@echo "... src/lives.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -429,6 +546,9 @@ help:
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/propulsion.o"
+	@echo "... src/propulsion.i"
+	@echo "... src/propulsion.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"

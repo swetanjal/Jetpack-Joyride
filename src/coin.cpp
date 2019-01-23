@@ -7,26 +7,26 @@ Coin::Coin(float x, float y, color_t color, float r) {
     this->rotation = 0;
     this->radius = r;
     speed = 1;
-    const int N = 100;
+    const int N = 360;
 	float deg = 360 * 1.0f / N;
 	float theta = 0.0f;
-	float pi = 22 * 1.0f / 7;
+	float pi = 3.141;
 	static GLfloat vertex_buffer_data[3 * 3 * N];
 	for(int i = 0; i < N; ++i){
 		vertex_buffer_data[9 * i] = 0.0f;
 		vertex_buffer_data[9 * i + 1] = 0.0f;
 		vertex_buffer_data[9 * i + 2] = 0.0f;
 
-		vertex_buffer_data[9 * i + 3] = this->radius * cos(theta * pi / 180);
-		vertex_buffer_data[9 * i + 4] = this->radius * sin(theta * pi / 180);
+		vertex_buffer_data[9 * i + 3] = this->radius * 1.0f * cos(theta * pi * 1.0f / 180);
+		vertex_buffer_data[9 * i + 4] = this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
 		vertex_buffer_data[9 * i + 5] = 0.0f;
 
 		theta += deg;
-		vertex_buffer_data[9 * i + 6] = this->radius * cos(theta * pi / 180);
-		vertex_buffer_data[9 * i + 7] = this->radius * sin(theta * pi / 180);
+		vertex_buffer_data[9 * i + 6] = this->radius * 1.0f * cos(theta * pi * 1.0f / 180);
+		vertex_buffer_data[9 * i + 7] = this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
 		vertex_buffer_data[9 * i + 8] = 0.0f;
 	}
-    this->object = create3DObject(GL_TRIANGLES, 3 * 3 * N, vertex_buffer_data, color, GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data, color, GL_FILL);
 }
 
 void Coin::draw(glm::mat4 VP) {

@@ -57,6 +57,12 @@ struct GLMatrices {
     GLuint    MatrixID;
 };
 
+struct Point 
+{ 
+    float x; 
+    float y; 
+}; 
+
 extern GLMatrices Matrices;
 
 // ---- Logic ----
@@ -79,7 +85,17 @@ extern const color_t COLOR_RED;
 extern const color_t COLOR_GREEN;
 extern const color_t COLOR_BLACK;
 extern const color_t COLOR_BACKGROUND;
+extern const color_t COLOR_YELLOW;
 #include "player.h"
 #include "coin.h"
+#include "enemy1.h"
+#include "enemy2.h"
+#include "lives.h"
 bool detect_collision_with_coin(Coin c, Player p);
+bool detect_collision_with_enemy1(Enemy1 e, Player p);
+bool detect_collision_with_enemy2(Enemy2 e, Player p);
+bool detect_collision_with_lives(Lives l, Player p);
+bool doIntersect(Point p1, Point q1, Point p2, Point q2);
+float orientation(Point p, Point q, Point r);
+bool onSegment(Point p, Point q, Point r);
 #endif

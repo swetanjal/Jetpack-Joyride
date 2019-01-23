@@ -4,6 +4,10 @@
 #include "coin.h"
 #include "player.h"
 #include "global.h"
+#include "enemy1.h"
+#include "enemy2.h"
+#include "lives.h"
+#include "propulsion.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -15,6 +19,10 @@ GLFWwindow *window;
 **************************/
 
 Ground ground;
+vector <Propulsion> propulsion;
+vector <Enemy1> enemy1;
+vector <Enemy2> enemy2;
+vector <Lives> lives;
 Player player;
 vector <Coin> coins;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
@@ -60,6 +68,14 @@ void draw() {
     ground.draw(VP);
     for(int i = 0; i < coins.size(); ++i)
         coins[i].draw(VP);
+    for(int i = 0; i < enemy1.size(); ++i)
+        enemy1[i].draw(VP);
+    for(int i = 0; i < enemy2.size(); ++i)
+        enemy2[i].draw(VP);
+    for(int i = 0; i < lives.size(); ++i)
+        lives[i].draw(VP);
+    for(int i = 0; i < propulsion.size(); ++i)
+        propulsion[i].draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -91,6 +107,16 @@ void tick_input(GLFWwindow *window) {
     ground.set_position(ground.position.x + delta_x, ground.position.y);
     for(int i = 0; i < coins.size(); ++i)
         coins[i].set_position(coins[i].position.x + delta_x, coins[i].position.y);
+    for(int i = 0; i < enemy1.size(); ++i){
+        enemy1[i].x1 += delta_x;
+        enemy1[i].x2 += delta_x;
+        enemy1[i].set_position(enemy1[i].position.x + delta_x, enemy1[i].position.y);
+    }    
+    for(int i = 0; i < enemy2.size(); ++i){
+        enemy2[i].x1 += delta_x;
+        enemy2[i].x2 += delta_x;
+        enemy2[i].set_position(enemy2[i].position.x + delta_x, enemy2[i].position.y);
+    }
 }
 
 void tick_elements() {
@@ -102,6 +128,34 @@ void tick_elements() {
             coins.erase(coins.begin() + i);
             i = i - 1;
         }
+    }
+    for(int i = 0; i < enemy1.size(); ++i){
+        if(detect_collision_with_enemy1(enemy1[i], player))
+        {
+            enemy1.erase(enemy1.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < enemy2.size(); ++i){
+        if(detect_collision_with_enemy2(enemy2[i], player)){
+            enemy2.erase(enemy2.begin() + i);
+            i = i - 1;
+        }
+        enemy2[i].tick();
+    }
+    for(int i = 0; i < lives.size(); ++i){
+        lives[i].tick();
+        if(detect_collision_with_lives(lives[i], player)){
+            lives.erase(lives.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < propulsion.size(); ++i){
+        propulsion[i].tick();
+    }
+    if(ground.position.y < player.position.y - player.length)
+    {
+        propulsion.push_back(Propulsion(player.position.x + player.breadth / 2, player.position.y - player.length, COLOR_YELLOW));
     }
     player.tick();
     camera_rotation_angle += 1;
@@ -115,8 +169,15 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     ground       = Ground(-4, -3, COLOR_BLACK, 3, 100);
     player = Player(-4, -2, COLOR_GREEN);
-    coins.push_back(Coin(0, 0, COLOR_RED, 0.2));
+    enemy1.push_back(Enemy1(0, 2, COLOR_BLACK));
+    coins.push_back(Coin(1, 0, COLOR_RED, 0.2));
+    coins.push_back(Coin(2, 0, COLOR_RED, 0.2));
+    coins.push_back(Coin(3, 0, COLOR_RED, 0.2));
+    coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
+    enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
+    propulsion.push_back(Propulsion(2, 2, COLOR_YELLOW));
     // Create and compile our GLSL program from the shaders
+    lives.push_back(Lives(2, 3, COLOR_RED));
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
     Matrices.MatrixID = glGetUniformLocation(programID, "MVP");
@@ -179,6 +240,82 @@ bool detect_collision_with_coin(Coin c, Player p)
     float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
     return (DeltaX * DeltaX + DeltaY * DeltaY) < (c.radius * c.radius);
 }
+
+bool detect_collision_with_enemy1(Enemy1 e, Player p)
+{
+    float DeltaX = e.x1 - max(p.position.x, min(e.x1, p.position.x + p.breadth));
+    float DeltaY = e.y1 - min(p.position.y, max(e.y1, p.position.y - p.length));
+    int tmp = (DeltaX * DeltaX + DeltaY * DeltaY) < (e.radius * e.radius);
+    DeltaX = e.x2 - max(p.position.x, min(e.x2, p.position.x + p.breadth));
+    DeltaY = e.y2 - min(p.position.y, max(e.y2, p.position.y - p.length));
+    tmp = tmp | ((DeltaX * DeltaX + DeltaY * DeltaY) < (e.radius * e.radius));
+    Point p1 = {e.x1, e.y1};
+    Point q1 = {e.x2, e.y2};
+    // Top of player
+    Point p2 = {p.position.x, p.position.y};
+    Point q2 = {p.position.x + p.breadth, p.position.y};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Bottom of player
+    p2 = {p.position.x, p.position.y - p.length};
+    q2 = {p.position.x + p.breadth, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Left of player
+    p2 = {p.position.x, p.position.y};
+    q2 = {p.position.x, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Right of player
+    p2 = {p.position.x + p.breadth, p.position.y};
+    q2 = {p.position.x + p.breadth, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    if(tmp){
+        return true;
+    }
+    return false;
+}
+
+bool detect_collision_with_enemy2(Enemy2 e, Player p)
+{
+    float DeltaX = e.x1 - max(p.position.x, min(e.x1, p.position.x + p.breadth));
+    float DeltaY = e.y1 - min(p.position.y, max(e.y1, p.position.y - p.length));
+    int tmp = (DeltaX * DeltaX + DeltaY * DeltaY) < (e.radius * e.radius);
+    DeltaX = e.x2 - max(p.position.x, min(e.x2, p.position.x + p.breadth));
+    DeltaY = e.y2 - min(p.position.y, max(e.y2, p.position.y - p.length));
+    tmp = tmp | ((DeltaX * DeltaX + DeltaY * DeltaY) < (e.radius * e.radius));
+    Point p1 = {e.x1, e.y1};
+    Point q1 = {e.x2, e.y2};
+    // Top of player
+    Point p2 = {p.position.x, p.position.y};
+    Point q2 = {p.position.x + p.breadth, p.position.y};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Bottom of player
+    p2 = {p.position.x, p.position.y - p.length};
+    q2 = {p.position.x + p.breadth, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Left of player
+    p2 = {p.position.x, p.position.y};
+    q2 = {p.position.x, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    // Right of player
+    p2 = {p.position.x + p.breadth, p.position.y};
+    q2 = {p.position.x + p.breadth, p.position.y - p.length};
+    tmp = tmp | (doIntersect(p1, q1, p2, q2));
+    if(tmp){
+        return true;
+    }
+    return false;
+}
+
+bool detect_collision_with_lives(Lives l, Player p)
+{
+    float DeltaX = l.x1 - max(p.position.x, min(l.x1, p.position.x + p.breadth));
+    float DeltaY = l.y1 - min(p.position.y, max(l.y1, p.position.y - p.length));
+    int tmp = (DeltaX * DeltaX + DeltaY * DeltaY) < (l.radius * l.radius);
+    DeltaX = l.x2 - max(p.position.x, min(l.x2, p.position.x + p.breadth));
+    DeltaY = l.y2 - min(p.position.y, max(l.y2, p.position.y - p.length));
+    tmp = tmp | ((DeltaX * DeltaX + DeltaY * DeltaY) < (l.radius * l.radius));
+    return tmp;
+}
+
 void reset_screen() {
     float top    = screen_center_y + 4 / screen_zoom;
     float bottom = screen_center_y - 4 / screen_zoom;
@@ -186,3 +323,62 @@ void reset_screen() {
     float right  = screen_center_x + 4 / screen_zoom;
     Matrices.projection = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
 }
+  
+// Given three colinear points p, q, r, the function checks if 
+// point q lies on line segment 'pr' 
+bool onSegment(Point p, Point q, Point r) 
+{ 
+    if (q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) && 
+        q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y)) 
+       return true; 
+  
+    return false; 
+} 
+  
+// To find orientation of ordered triplet (p, q, r). 
+// The function returns following values 
+// 0 --> p, q and r are colinear 
+// 1 --> Clockwise 
+// 2 --> Counterclockwise 
+float orientation(Point p, Point q, Point r) 
+{ 
+    // See https://www.geeksforgeeks.org/orientation-3-ordered-points/ 
+    // for details of below formula. 
+    float val = (q.y - p.y) * (r.x - q.x) - 
+              (q.x - p.x) * (r.y - q.y); 
+  
+    if (val == 0) return 0;  // colinear 
+  
+    return (val > 0)? 1: 2; // clock or counterclock wise 
+} 
+  
+// The main function that returns true if line segment 'p1q1' 
+// and 'p2q2' intersect. 
+bool doIntersect(Point p1, Point q1, Point p2, Point q2) 
+{ 
+    // Find the four orientations needed for general and 
+    // special cases 
+    float o1 = orientation(p1, q1, p2); 
+    float o2 = orientation(p1, q1, q2); 
+    float o3 = orientation(p2, q2, p1); 
+    float o4 = orientation(p2, q2, q1); 
+  
+    // General case 
+    if (o1 != o2 && o3 != o4) 
+        return true; 
+  
+    // Special Cases 
+    // p1, q1 and p2 are colinear and p2 lies on segment p1q1 
+    if (o1 == 0 && onSegment(p1, p2, q1)) return true; 
+  
+    // p1, q1 and q2 are colinear and q2 lies on segment p1q1 
+    if (o2 == 0 && onSegment(p1, q2, q1)) return true; 
+  
+    // p2, q2 and p1 are colinear and p1 lies on segment p2q2 
+    if (o3 == 0 && onSegment(p2, p1, q2)) return true; 
+  
+     // p2, q2 and q1 are colinear and q1 lies on segment p2q2 
+    if (o4 == 0 && onSegment(p2, q1, q2)) return true; 
+  
+    return false; // Doesn't fall in any of the above cases 
+} 

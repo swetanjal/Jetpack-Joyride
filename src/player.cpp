@@ -1,7 +1,9 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include "player.h"
+#include "ring.h"
 #include "main.h"
 #include "global.h"
+#include "iostream"
 Player::Player(float x, float y, color_t color) {
     this->position = glm::vec3(x, y, 0);
     this->rotation = 0;
@@ -41,9 +43,38 @@ bool Player::detect_collision_with_ground(){
     return false;
 }
 
+float dist(Point a, Point b)
+{
+    return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+}
+
+int Player::insideRing(Ring r){
+    Point p = {this->position.x, this->position.y};
+    Point q = {r.position.x, r.position.y};
+    int fl = 0;
+    if(dist(p, q) <= r.radius && p.y >= q.y){
+        fl += 1;
+    }
+    p = {this->position.x + this->breadth, this->position.y};
+    if(dist(p, q) <= r.radius && p.y >= q.y){
+        fl += 1;
+    }
+    return fl;
+}
+
 void Player::tick() {
     //this->rotation += speed;
     // this->position.x -= speed;
+    int inside = 0;
+    for(int i = 0; i < ring.size(); ++i)
+    {
+        if(insideRing(ring[i]) == 2){
+            float tmp = 0.01;
+            speed = 0.0f;
+            this->position.y += tmp;
+            return;
+        }
+    }
     if(detect_collision_with_ground() == false){
         speed -= 0.001;
     }

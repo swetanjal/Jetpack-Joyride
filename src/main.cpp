@@ -9,6 +9,7 @@
 #include "lives.h"
 #include "propulsion.h"
 #include "boomerang.h"
+#include "ring.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -20,6 +21,7 @@ GLFWwindow *window;
 **************************/
 
 Ground ground;
+vector <Ring> ring;
 vector <Boomerang> boomerang;
 vector <Propulsion> propulsion;
 vector <Enemy1> enemy1;
@@ -65,7 +67,8 @@ void draw() {
     glm::mat4 MVP;  // MVP = Projection * View * Model
 
     // Scene render
-    
+    for(int i = 0; i < ring.size(); ++i)
+        ring[i].draw(VP);
     player.draw(VP);
     ground.draw(VP);
     for(int i = 0; i < coins.size(); ++i)
@@ -80,8 +83,28 @@ void draw() {
         propulsion[i].draw(VP);
     for(int i = 0; i < boomerang.size(); ++i)
         boomerang[i].draw(VP);
+    
+}
+/////////////////////////////
+float dist1(Point a, Point b)
+{
+    return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
 }
 
+int insideRing(Ring r){
+    Point p = {player.position.x, player.position.y};
+    Point q = {r.position.x, r.position.y};
+    int fl = 0;
+    if(dist1(p, q) <= r.radius && p.y >= q.y){
+        fl += 1;
+    }
+    p = {player.position.x + player.breadth, player.position.y};
+    if(dist1(p, q) <= r.radius && p.y >= q.y){
+        fl += 1;
+    }
+    return fl;
+}
+////////////////////////////
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
@@ -102,7 +125,13 @@ void tick_input(GLFWwindow *window) {
         }
     }
     if(space){
-        player.speed = 0.05;
+        int flag = 0;
+        for(int i = 0; i < ring.size(); ++i){
+            if(insideRing(ring[i]) == 1)
+                flag = 1;
+        }
+        if(flag == 0)
+            player.speed = 0.05;
     }
     else if(player.detect_collision_with_ground() == true)
     {
@@ -121,6 +150,8 @@ void tick_input(GLFWwindow *window) {
         enemy2[i].x2 += delta_x;
         enemy2[i].set_position(enemy2[i].position.x + delta_x, enemy2[i].position.y);
     }
+    for(int i = 0; i < ring.size(); ++i)
+        ring[i].set_position(ring[i].position.x + delta_x, ring[i].position.y);
 }
 
 void tick_elements() {
@@ -171,6 +202,9 @@ void tick_elements() {
             continue;
         }
     }
+    for(int i = 0; i < ring.size(); ++i){
+        ring[i].tick();
+    }
     camera_rotation_angle += 1;
 }
 
@@ -189,6 +223,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
     enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
     boomerang.push_back(Boomerang(1, 3, COLOR_BLACK));
+    ring.push_back(Ring(0, 0, COLOR_BLACK));
     // Create and compile our GLSL program from the shaders
     lives.push_back(Lives(2, 3, COLOR_RED));
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");

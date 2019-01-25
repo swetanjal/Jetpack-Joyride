@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/other_handlers.cpp" "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o"
   "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.cpp" "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/CMakeFiles/graphics_asgn1.dir/src/player.cpp.o"
   "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/propulsion.cpp" "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o"
+  "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.cpp" "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o"
   "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/timer.cpp" "/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

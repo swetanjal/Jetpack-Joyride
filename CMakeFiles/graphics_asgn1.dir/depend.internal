@@ -122,6 +122,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/propulsion.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/timer.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/top.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/boomerang.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
@@ -179,3 +180,14 @@ CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/timer.cpp
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/timer.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/boomerang.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/enemy1.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/enemy2.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/lives.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/top.cpp
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/top.h

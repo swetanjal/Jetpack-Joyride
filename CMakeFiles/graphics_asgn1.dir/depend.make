@@ -121,6 +121,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/propulsion.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/timer.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/top.h
 
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/coin.h
@@ -178,4 +179,15 @@ CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/ring.h
 
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o: src/timer.cpp
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o: src/timer.h
+
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/boomerang.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/enemy1.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/main.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/player.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/ring.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/top.cpp
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/top.h
 

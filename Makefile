@@ -582,6 +582,33 @@ src/timer.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/timer.cpp.s
 .PHONY : src/timer.cpp.s
 
+src/top.o: src/top.cpp.o
+
+.PHONY : src/top.o
+
+# target to build an object file
+src/top.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/top.cpp.o
+.PHONY : src/top.cpp.o
+
+src/top.i: src/top.cpp.i
+
+.PHONY : src/top.i
+
+# target to preprocess a source file
+src/top.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/top.cpp.i
+.PHONY : src/top.cpp.i
+
+src/top.s: src/top.cpp.s
+
+.PHONY : src/top.s
+
+# target to generate assembly for a file
+src/top.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/top.cpp.s
+.PHONY : src/top.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -642,6 +669,9 @@ help:
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"
+	@echo "... src/top.o"
+	@echo "... src/top.i"
+	@echo "... src/top.s"
 .PHONY : help
 
 

@@ -11,6 +11,7 @@
 #include "boomerang.h"
 #include "ring.h"
 #include "magnet.h"
+#include "top.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -22,6 +23,7 @@ GLFWwindow *window;
 **************************/
 
 Ground ground;
+Top ceiling;
 vector <Ring> ring;
 vector <Boomerang> boomerang;
 vector <Propulsion> propulsion;
@@ -73,6 +75,7 @@ void draw() {
         ring[i].draw(VP);
     player.draw(VP);
     ground.draw(VP);
+    ceiling.draw(VP);
     for(int i = 0; i < coins.size(); ++i)
         coins[i].draw(VP);
     for(int i = 0; i < enemy1.size(); ++i)
@@ -135,8 +138,11 @@ void tick_input(GLFWwindow *window) {
                 player.speed = 0.0f;
             }
         }
-        if(flag == 0)
+        if(flag == 0 && player.position.y < 3.8)
             player.speed = 0.05;
+        if(player.position.y >= 3.8){
+            player.speed = 0.0f;
+        }
     }
     else if(player.detect_collision_with_ground() == true)
     {
@@ -171,6 +177,10 @@ int boomerang_countdown;
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
     ground.tick();
+    if(player.position.y >= 3.8){
+        player.position.y = 3.8;
+        player.speed = 0.0f;
+    }
     countdown++;
     countdown = countdown % 3000;
     boomerang_countdown += 1;
@@ -279,7 +289,9 @@ void tick_elements() {
 void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
+    
     ground       = Ground(-24, -3, COLOR_BLACK, 10, 200);
+    ceiling = Top(-24, 4, COLOR_BLACK, 0.2, 200);
     player = Player(-4, -2, COLOR_GREEN);
     // Randomly placing coins
     int last_x = -5;

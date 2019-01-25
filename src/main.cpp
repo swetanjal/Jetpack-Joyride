@@ -8,6 +8,7 @@
 #include "enemy2.h"
 #include "lives.h"
 #include "propulsion.h"
+#include "boomerang.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -19,6 +20,7 @@ GLFWwindow *window;
 **************************/
 
 Ground ground;
+vector <Boomerang> boomerang;
 vector <Propulsion> propulsion;
 vector <Enemy1> enemy1;
 vector <Enemy2> enemy2;
@@ -76,6 +78,8 @@ void draw() {
         lives[i].draw(VP);
     for(int i = 0; i < propulsion.size(); ++i)
         propulsion[i].draw(VP);
+    for(int i = 0; i < boomerang.size(); ++i)
+        boomerang[i].draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -158,6 +162,15 @@ void tick_elements() {
         propulsion.push_back(Propulsion(player.position.x + player.breadth / 2, player.position.y - player.length, COLOR_YELLOW));
     }
     player.tick();
+    for(int i = 0; i < boomerang.size(); ++i)
+    {
+        boomerang[i].tick();
+        if(detect_collision_with_boomerang(boomerang[i], player)){
+            boomerang.erase(boomerang.begin() + i);
+            i = i - 1;
+            continue;
+        }
+    }
     camera_rotation_angle += 1;
 }
 
@@ -175,7 +188,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     coins.push_back(Coin(3, 0, COLOR_RED, 0.2));
     coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
     enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
-    propulsion.push_back(Propulsion(2, 2, COLOR_YELLOW));
+    boomerang.push_back(Boomerang(1, 3, COLOR_BLACK));
     // Create and compile our GLSL program from the shaders
     lives.push_back(Lives(2, 3, COLOR_RED));
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
@@ -301,6 +314,94 @@ bool detect_collision_with_enemy2(Enemy2 e, Player p)
     tmp = tmp | (doIntersect(p1, q1, p2, q2));
     if(tmp){
         return true;
+    }
+    return false;
+}
+
+bool detect_collision_with_boomerang(Boomerang b, Player p)
+{
+    float pi = 3.141;
+    int tmp = 0;
+    for(int i = 0; i < 4; ++i){
+        Point P1 = b.p1; P1.x += (b.p1.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p1.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); P1.y += (b.p1.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p1.y - b.position.y) * cos(b.rotation1 * pi / 180.0f); 
+        Point Q1 = b.p2; Q1.x += (b.p2.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p2.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); Q1.y += (b.p2.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p2.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        Point P2;
+        Point Q2;
+        if(i == 0){
+            // Top of the player
+            P2 = {p.position.x, p.position.y};
+            Q2 = {p.position.x + p.breadth, p.position.y};
+        }
+        else if(i == 1){
+            // Bottom of the player
+            P2 = {p.position.x, p.position.y - p.length};
+            Q2 = {p.position.x + p.breadth, p.position.y - p.length};
+        }
+        else if(i == 2){
+            // Left of the player
+            P2 = {p.position.x, p.position.y};
+            Q2 = {p.position.x, p.position.y - p.length};
+        }
+        else{
+            // Right of player
+            P2 = {p.position.x + p.breadth, p.position.y};
+            Q2 = {p.position.x + p.breadth, p.position.y - p.length};
+        }
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.p2; P1.x += (b.p2.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p2.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); P1.y += (b.p2.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p2.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        Q1 = b.p3; Q1.x += (b.p3.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p3.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); Q1.y += (b.p3.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p3.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.p3; P1.x += (b.p3.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p3.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); P1.y += (b.p3.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p3.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        Q1 = b.p4; Q1.x += (b.p4.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p4.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); Q1.y += (b.p4.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p4.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.p4; P1.x += (b.p4.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p4.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); P1.y += (b.p4.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p4.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        Q1 = b.p1; Q1.x += (b.p1.x - b.position.x) * cos(b.rotation1 * pi / 180.0f) - (b.p1.y - b.position.y) * sin(b.rotation1 * pi / 180.0f); Q1.y += (b.p1.x - b.position.x) * sin(b.rotation1 * pi / 180.0f) + (b.p1.y - b.position.y) * cos(b.rotation1 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+
+        P1 = b.q1; P1.x += (b.q1.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q1.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); P1.y += (b.q1.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q1.y - b.position.y) * cos(b.rotation2 * pi / 180.0f); 
+        Q1 = b.q2; Q1.x += (b.q2.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q2.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); Q1.y += (b.q2.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q2.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.q2; P1.x += (b.q2.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q2.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); P1.y += (b.q2.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q2.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        Q1 = b.q3; Q1.x += (b.q3.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q3.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); Q1.y += (b.q3.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q3.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.q3; P1.x += (b.q3.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q3.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); P1.y += (b.q3.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q3.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        Q1 = b.q4; Q1.x += (b.q4.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q4.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); Q1.y += (b.q4.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q4.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
+        P1 = b.q4; P1.x += (b.q4.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q4.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); P1.y += (b.q4.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q4.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        Q1 = b.q1; Q1.x += (b.q1.x - b.position.x) * cos(b.rotation2 * pi / 180.0f) - (b.q1.y - b.position.y) * sin(b.rotation2 * pi / 180.0f); Q1.y += (b.q1.x - b.position.x) * sin(b.rotation2 * pi / 180.0f) + (b.q1.y - b.position.y) * cos(b.rotation2 * pi / 180.0f);
+        tmp = tmp | (doIntersect(P1, Q1, P2, Q2));
+        if(tmp)
+        {
+            return true;
+        }
     }
     return false;
 }

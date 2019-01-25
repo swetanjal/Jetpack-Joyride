@@ -3,6 +3,7 @@
 
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ball.cpp
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ball.h
+CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/enemy2.h
@@ -10,6 +11,16 @@ CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/boomerang.cpp
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/boomerang.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/enemy1.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/main.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/player.h
+
+CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/coin.cpp
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/enemy1.h
@@ -18,6 +29,7 @@ CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/color.cpp
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/enemy1.h
@@ -26,6 +38,7 @@ CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/enemy1.cpp
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/enemy1.h
@@ -34,6 +47,7 @@ CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/enemy2.cpp
@@ -42,6 +56,7 @@ CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/enemy2.h
@@ -51,6 +66,7 @@ CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy2.h
@@ -59,6 +75,7 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/enemy2.h
@@ -67,6 +84,7 @@ CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy2.h
@@ -79,6 +97,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/propulsion.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/timer.h
 
+CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/enemy2.h
@@ -87,6 +106,7 @@ CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/nonedit.cpp
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/enemy2.h
@@ -95,6 +115,7 @@ CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/other_handlers.cpp
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/enemy2.h
@@ -105,6 +126,7 @@ CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.cpp
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.h
 
+CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/enemy2.h

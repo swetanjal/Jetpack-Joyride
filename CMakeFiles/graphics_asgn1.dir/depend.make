@@ -77,6 +77,8 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/global.h
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/ground.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/input.cpp
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/lives.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/main.h

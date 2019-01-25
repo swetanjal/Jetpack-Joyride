@@ -127,8 +127,10 @@ void tick_input(GLFWwindow *window) {
     if(space){
         int flag = 0;
         for(int i = 0; i < ring.size(); ++i){
-            if(insideRing(ring[i]) == 1)
+            if(insideRing(ring[i]) == 1){
                 flag = 1;
+                player.speed = 0.0f;
+            }
         }
         if(flag == 0)
             player.speed = 0.05;
@@ -155,6 +157,7 @@ void tick_input(GLFWwindow *window) {
 }
 
 void tick_elements() {
+    glfwSetScrollCallback(window, scroll_callback);
     ground.tick();
     for(int i = 0; i < coins.size(); ++i)
         coins[i].tick();

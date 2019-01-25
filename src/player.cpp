@@ -7,7 +7,7 @@
 Player::Player(float x, float y, color_t color) {
     this->position = glm::vec3(x, y, 0);
     this->rotation = 0;
-    speed = 0;
+    this->speed = 0;
     this->length = 1.0f;
     this->breadth = 1.0f;
     static const GLfloat vertex_buffer_data[] = {
@@ -70,14 +70,19 @@ void Player::tick() {
     {
         if(insideRing(ring[i]) == 2){
             float tmp = 0.01;
-            speed = 0.0f;
+            this->speed = 0.0f;
             this->position.y += tmp;
+            return;
+        }
+        if(insideRing(ring[i]) == 1 && abs(this->position.y - ring[i].position.y) <= 0.08)
+        {
+            this->speed = 0.0f;
             return;
         }
     }
     if(detect_collision_with_ground() == false){
-        speed -= 0.001;
+        this->speed -= 0.001;
     }
-    this->position.y += speed;
+    this->position.y += this->speed;
 }
 

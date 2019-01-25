@@ -4,3 +4,4 @@
 using namespace std;
 extern Ground ground;
 extern vector <Ring> ring;
+extern float screen_zoom;

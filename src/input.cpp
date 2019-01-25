@@ -13,6 +13,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "main.h"
+#include "global.h"
 
 bool   cannon_keyboard_input = true;
 bool   drag_pan = false, old_cki;
@@ -85,4 +86,12 @@ void mouseButton(GLFWwindow *window, int button, int action, int mods) {
 
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
     // Do something
+    //cout << xoffset << " " << yoffset << " " << screen_zoom << endl;
+    if(yoffset > 0 && screen_zoom <= 2)
+        screen_zoom += 0.1;
+    else{
+        if(screen_zoom >= 0.2)
+            screen_zoom -= 0.1;
+    }
+    reset_screen();
 }

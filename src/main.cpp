@@ -157,13 +157,71 @@ void tick_input(GLFWwindow *window) {
     }
     for(int i = 0; i < ring.size(); ++i)
         ring[i].set_position(ring[i].position.x + delta_x, ring[i].position.y);
+    for(int i = 0; i < lives.size(); ++i){
+        lives[i].set_position(lives[i].position.x + delta_x, lives[i].position.y);
+    }
+    for(int i = 0; i < boomerang.size(); ++i){
+        //boomerang[i].set_position(boomerang[i].position.x + delta_x, boomerang[i].position.y);
+    }
     for(int i = 0; i < magnets.size(); ++i)
         magnets[i].set_position(magnets[i].position.x + delta_x, magnets[i].position.y);
 }
-
+int countdown;
+int boomerang_countdown;
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
     ground.tick();
+    countdown++;
+    countdown = countdown % 3000;
+    boomerang_countdown += 1;
+    boomerang_countdown = boomerang_countdown % 1500;
+    if(countdown == 0){
+        lives.push_back(Lives(2, 3, COLOR_RED));
+    }
+    if(boomerang_countdown == 0){
+        boomerang.push_back(Boomerang(10, 5, COLOR_BLACK));
+    }
+    for(int i = 0; i < coins.size(); ++i){
+        if(coins[i].position.x <= -20)
+        {
+            coins.erase(coins.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < propulsion.size(); ++i)
+    {
+        if(propulsion[i].position.y <= -20)
+        {
+            propulsion.erase(propulsion.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < enemy1.size(); ++i){
+        if(enemy1[i].position.x <= -20)
+        {
+            enemy1.erase(enemy1.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < ring.size(); ++i){
+        if(ring[i].position.x <= -20)
+        {
+            ring.erase(ring.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < enemy2.size(); ++i){
+        if(enemy2[i].position.x <= -20){
+            enemy2.erase(enemy2.begin() + i);
+            i = i - 1;
+        }
+    }
+    for(int i = 0; i < magnets.size(); ++i){
+        if(magnets[i].position.x <= -20){
+            magnets.erase(magnets.begin() + i);
+            i = i - 1;
+        }
+    }
     for(int i = 0; i < coins.size(); ++i)
         coins[i].tick();
     for(int i = 0; i < coins.size(); ++i){
@@ -221,19 +279,64 @@ void tick_elements() {
 void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
-
-    ground       = Ground(-24, -3, COLOR_BLACK, 3, 100);
+    ground       = Ground(-24, -3, COLOR_BLACK, 10, 200);
     player = Player(-4, -2, COLOR_GREEN);
-    //enemy1.push_back(Enemy1(0, 2, COLOR_BLACK));
-    //coins.push_back(Coin(1, 0, COLOR_RED, 0.2));
-    //coins.push_back(Coin(2, 0, COLOR_RED, 0.2));
-    //coins.push_back(Coin(3, 0, COLOR_RED, 0.2));
-    //coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
-    //enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
-    //boomerang.push_back(Boomerang(1, 3, COLOR_BLACK));
-    //ring.push_back(Ring(0, 0, COLOR_BLACK));
-    // lives.push_back(Lives(2, 3, COLOR_RED));
-    magnets.push_back(Magnet(0, 0, COLOR_BLACK));
+    // Randomly placing coins
+    int last_x = -5;
+    for(int i = 0; i < 10; ++i){
+        last_x = last_x + (rand() % 6) + 10;
+        float tmp_y = rand() % 4;
+        coins.push_back(Coin(last_x, tmp_y, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 0.5, tmp_y, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 1, tmp_y, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 1.5, tmp_y, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 2, tmp_y, COLOR_RED, 0.2));
+
+        if(rand() % 2)
+        {
+            coins.push_back(Coin(last_x, tmp_y - 0.5, COLOR_RED, 0.2));
+            coins.push_back(Coin(last_x + 0.5, tmp_y - 0.5, COLOR_RED, 0.2));
+            coins.push_back(Coin(last_x + 1, tmp_y - 0.5, COLOR_RED, 0.2));
+            coins.push_back(Coin(last_x + 1.5, tmp_y - 0.5, COLOR_RED, 0.2));
+            coins.push_back(Coin(last_x + 2, tmp_y - 0.5, COLOR_RED, 0.2));
+        }
+        coins.push_back(Coin(last_x, tmp_y - 1, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 0.5, tmp_y - 1, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 1, tmp_y - 1, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 1.5, tmp_y - 1, COLOR_RED, 0.2));
+        coins.push_back(Coin(last_x + 2, tmp_y - 1, COLOR_RED, 0.2));
+    }
+    last_x = 0.0f;
+    for(int i = 0; i < 4; ++i){
+        last_x = last_x + (rand() % 10) + 50;
+        ring.push_back(Ring(last_x, 0, COLOR_BLACK));    
+    }
+    last_x = 2.0f;
+    for(int i = 0; i < 20; ++i){
+        float ttt[] = {-0.6f, 0.8f, 1.5f, 2.2f, -1.3f};
+        last_x = last_x + (rand() % 10) + 7;
+        enemy1.push_back(Enemy1(last_x, ttt[rand() % 5], COLOR_BLACK));    
+    }
+    last_x = 5.0f;
+    for(int i = 0; i < 20; ++i){
+        last_x = last_x + (rand() % 12) + 10;
+        if(rand()%2)
+            enemy2.push_back(Enemy2(last_x, -1, COLOR_YELLOW));
+        else
+            enemy2.push_back(Enemy2(last_x, 3, COLOR_YELLOW));
+    }
+    last_x = -3;
+    for(int i = 0; i < 4; ++i){
+        last_x = last_x + (rand() % 10) + 50;
+        magnets.push_back(Magnet(last_x, 2.6, COLOR_BLACK));
+    }
+    enemy1.push_back(Enemy1(2, -1.3f, COLOR_BLACK));
+    coins.push_back(Coin(1, 3, COLOR_RED, 0.2));
+    enemy2.push_back(Enemy2(5, -1, COLOR_BLACK));
+    boomerang.push_back(Boomerang(10, 5, COLOR_BLACK));
+    ring.push_back(Ring(0, 0, COLOR_BLACK));
+    lives.push_back(Lives(2, 3, COLOR_RED));
+    magnets.push_back(Magnet(-3, 2, COLOR_BLACK));
     // Create and compile our GLSL program from the shaders
     
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");

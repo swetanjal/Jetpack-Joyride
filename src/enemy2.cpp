@@ -8,7 +8,7 @@ Enemy2::Enemy2(float x, float y, color_t color) {
     this->rotation = 0;
     this->radius = 0.2;
     this->dist = 2;
-    this -> delta = 0.05;
+    this -> delta = 0.03;
     this->x1 = x;
     this->y1 = y;
     this->x2 = x + this->dist * cos(this->rotation * pi * 1.0f / 180);

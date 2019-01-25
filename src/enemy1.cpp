@@ -5,7 +5,9 @@
 Enemy1::Enemy1(float x, float y, color_t color) {
     float pi = 3.141;
     this->position = glm::vec3(x, y, 0);
-    this->rotation = 10;
+    this->rotation = rand() % 10 + 5;
+    if(rand() % 2)
+        this->rotation *= -1.0f;
     this->radius = 0.2;
     this->dist = 2;
     this -> delta = 0.05;

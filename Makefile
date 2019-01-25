@@ -366,6 +366,33 @@ src/lives.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/lives.cpp.s
 .PHONY : src/lives.cpp.s
 
+src/magnet.o: src/magnet.cpp.o
+
+.PHONY : src/magnet.o
+
+# target to build an object file
+src/magnet.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o
+.PHONY : src/magnet.cpp.o
+
+src/magnet.i: src/magnet.cpp.i
+
+.PHONY : src/magnet.i
+
+# target to preprocess a source file
+src/magnet.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.i
+.PHONY : src/magnet.cpp.i
+
+src/magnet.s: src/magnet.cpp.s
+
+.PHONY : src/magnet.s
+
+# target to generate assembly for a file
+src/magnet.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.s
+.PHONY : src/magnet.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -591,6 +618,9 @@ help:
 	@echo "... src/lives.o"
 	@echo "... src/lives.i"
 	@echo "... src/lives.s"
+	@echo "... src/magnet.o"
+	@echo "... src/magnet.i"
+	@echo "... src/magnet.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

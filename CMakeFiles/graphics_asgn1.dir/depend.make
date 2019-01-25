@@ -81,6 +81,7 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/global.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/ground.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/input.cpp
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/magnet.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/ring.h
@@ -95,6 +96,17 @@ CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/ring.h
 
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/boomerang.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/enemy1.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/magnet.cpp
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/magnet.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/main.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/player.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/ring.h
+
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy1.h
@@ -102,6 +114,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/global.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/ground.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/magnet.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/player.h
@@ -136,6 +149,7 @@ CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/global.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/ground.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/magnet.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.cpp
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.h

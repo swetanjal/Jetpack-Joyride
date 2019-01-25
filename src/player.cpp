@@ -65,6 +65,10 @@ int Player::insideRing(Ring r){
 void Player::tick() {
     //this->rotation += speed;
     // this->position.x -= speed;
+    for(int i = 0; i < magnets.size(); ++i){
+        this->position.x += (-0.001f * (this->position.x - magnets[i].position.x));
+        this->position.y += (-0.02f * (this->position.y - magnets[i].position.y));
+    }
     int inside = 0;
     for(int i = 0; i < ring.size(); ++i)
     {

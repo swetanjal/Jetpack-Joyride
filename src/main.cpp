@@ -10,6 +10,7 @@
 #include "propulsion.h"
 #include "boomerang.h"
 #include "ring.h"
+#include "magnet.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -29,6 +30,7 @@ vector <Enemy2> enemy2;
 vector <Lives> lives;
 Player player;
 vector <Coin> coins;
+vector <Magnet> magnets;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 
@@ -83,7 +85,8 @@ void draw() {
         propulsion[i].draw(VP);
     for(int i = 0; i < boomerang.size(); ++i)
         boomerang[i].draw(VP);
-    
+    for(int i = 0; i < magnets.size(); ++i)
+        magnets[i].draw(VP);
 }
 /////////////////////////////
 float dist1(Point a, Point b)
@@ -154,6 +157,8 @@ void tick_input(GLFWwindow *window) {
     }
     for(int i = 0; i < ring.size(); ++i)
         ring[i].set_position(ring[i].position.x + delta_x, ring[i].position.y);
+    for(int i = 0; i < magnets.size(); ++i)
+        magnets[i].set_position(magnets[i].position.x + delta_x, magnets[i].position.y);
 }
 
 void tick_elements() {
@@ -217,18 +222,20 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    ground       = Ground(-4, -3, COLOR_BLACK, 3, 100);
+    ground       = Ground(-24, -3, COLOR_BLACK, 3, 100);
     player = Player(-4, -2, COLOR_GREEN);
-    enemy1.push_back(Enemy1(0, 2, COLOR_BLACK));
-    coins.push_back(Coin(1, 0, COLOR_RED, 0.2));
-    coins.push_back(Coin(2, 0, COLOR_RED, 0.2));
-    coins.push_back(Coin(3, 0, COLOR_RED, 0.2));
-    coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
-    enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
-    boomerang.push_back(Boomerang(1, 3, COLOR_BLACK));
-    ring.push_back(Ring(0, 0, COLOR_BLACK));
+    //enemy1.push_back(Enemy1(0, 2, COLOR_BLACK));
+    //coins.push_back(Coin(1, 0, COLOR_RED, 0.2));
+    //coins.push_back(Coin(2, 0, COLOR_RED, 0.2));
+    //coins.push_back(Coin(3, 0, COLOR_RED, 0.2));
+    //coins.push_back(Coin(4, 0, COLOR_RED, 0.2));
+    //enemy2.push_back(Enemy2(0, -1, COLOR_BLACK));
+    //boomerang.push_back(Boomerang(1, 3, COLOR_BLACK));
+    //ring.push_back(Ring(0, 0, COLOR_BLACK));
+    // lives.push_back(Lives(2, 3, COLOR_RED));
+    magnets.push_back(Magnet(0, 0, COLOR_BLACK));
     // Create and compile our GLSL program from the shaders
-    lives.push_back(Lives(2, 3, COLOR_RED));
+    
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
     Matrices.MatrixID = glGetUniformLocation(programID, "MVP");

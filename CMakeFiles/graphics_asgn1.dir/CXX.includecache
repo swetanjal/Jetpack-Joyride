@@ -65,6 +65,8 @@ ground.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
 ring.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
+magnet.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
 vector
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/vector
 
@@ -112,6 +114,16 @@ main.h
 main.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
 
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.cpp
+magnet.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
+main.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
+
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
+main.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
+
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.cpp
 main.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
@@ -137,6 +149,8 @@ boomerang.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/boomerang.h
 ring.h
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
+magnet.h
+/home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
 
 /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
 iostream

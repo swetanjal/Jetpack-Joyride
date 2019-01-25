@@ -82,6 +82,7 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/input.cpp
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/lives.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
@@ -95,6 +96,17 @@ CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/boomerang.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/enemy1.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/enemy2.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/lives.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.cpp
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/boomerang.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/coin.h
@@ -103,6 +115,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/global.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/lives.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.cpp
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h
@@ -137,6 +150,7 @@ CMakeFiles/graphics_asgn1.dir/src/player.cpp.o
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/global.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/ground.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/lives.h
+ /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/magnet.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/main.h
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.cpp
  /home/tapas/workspace/Sem4/Computer Graphics/Assignments/Assignment 1/Jetpack-Joyride/src/player.h

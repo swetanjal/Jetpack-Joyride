@@ -1,6 +1,6 @@
 #include "main.h"
 const color_t COLOR_RED = { 255, 0, 0 };
-const color_t COLOR_GREEN = { 124, 252, 0 };
+const color_t COLOR_GREEN = {153, 76, 107 };
 const color_t COLOR_BLACK = { 0, 0, 0 };
 const color_t COLOR_BACKGROUND = { 220, 220, 220 };
 const color_t COLOR_YELLOW = {255, 255, 0};
@@ -15,3 +15,4 @@ const color_t COLOR_WOOD = {230,190,138};
 const color_t COLOR_GREY_RING = {119,136,153};
 const color_t COLOR_MAGNET = {47,79,79};
 const color_t COLOR_OLIVE = {107,142,35};
+const color_t COLOR_SKIN = {198,134,66};

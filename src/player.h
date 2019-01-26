@@ -13,6 +13,7 @@ public:
     float length;
     float breadth;
     float rotation;
+    float radius;
     void draw(glm::mat4 VP);
     bool detect_collision_with_ground();
     int insideRing(Ring r);
@@ -23,6 +24,8 @@ private:
     VAO *object;
     VAO *object1;
     VAO *object2;
+    VAO *object3;
+    VAO *object4;
 };
 
 #endif // PLAYER_H

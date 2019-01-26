@@ -18,9 +18,38 @@ Player::Player(float x, float y, color_t color) {
         this->breadth, -this->length, 0.0f,
         this->breadth, 0.0f, 0.0f, // triangle 2 : end
     };
+
+    this->radius = 0.2;
+    const int N = 360;
+	float deg = 360 * 1.0f / N;
+	float theta = 0.0f;
+	float pi = 3.141;
+	static GLfloat vertex_buffer_data2[3 * 3 * N];
+	for(int i = 0; i < N; ++i){
+		vertex_buffer_data2[9 * i] = (this->breadth / 2) + 0.0f;
+		vertex_buffer_data2[9 * i + 1] = -(this->length / 3) + 0.0f;
+		vertex_buffer_data2[9 * i + 2] = 0.0f;
+
+		vertex_buffer_data2[9 * i + 3] = (this->breadth / 2) + this->radius * 1.0f * cos(theta * pi * 1.0f / 180);
+		vertex_buffer_data2[9 * i + 4] = -(this->length / 3) + this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
+		vertex_buffer_data2[9 * i + 5] = 0.0f;
+
+		theta += deg;
+		vertex_buffer_data2[9 * i + 6] = (this->breadth / 2) + this->radius * 1.0f * cos(theta * pi * 1.0f / 180);
+		vertex_buffer_data2[9 * i + 7] = -(this->length / 3) + this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
+		vertex_buffer_data2[9 * i + 8] = 0.0f;
+	}
+    static const GLfloat vertex_buffer_data3[] = {
+        0.0f, -this->length, 0.0f, // triangle 1 : begin
+        this->breadth, -this->length, 0.0f,
+        this->breadth / 2, -this->length / 2, 0.0f, // triangle 1 : end
+    };
+
     this->object = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, color, GL_FILL);
     this->object1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, COLOR_BLUE, GL_FILL);
     this->object2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, COLOR_MAGENTA, GL_FILL);
+    this->object3 = create3DObject(GL_TRIANGLES, N*3, vertex_buffer_data2, COLOR_BLACK, GL_FILL);
+    this->object4 = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data3, COLOR_SKIN, GL_FILL);
 }
 
 void Player::draw(glm::mat4 VP) {
@@ -39,6 +68,8 @@ void Player::draw(glm::mat4 VP) {
     if(life > 0){
         draw3DObject(this->object2);
     }
+    draw3DObject(this->object3);
+    draw3DObject(this->object4);
 }
 
 void Player::set_position(float x, float y) {

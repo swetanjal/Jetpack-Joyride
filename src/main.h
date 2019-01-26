@@ -97,6 +97,7 @@ extern const color_t COLOR_WOOD;
 extern const color_t COLOR_GREY_RING;
 extern const color_t COLOR_MAGNET;
 extern const color_t COLOR_OLIVE;
+extern const color_t COLOR_SKIN;
 #include "player.h"
 #include "coin.h"
 #include "enemy1.h"

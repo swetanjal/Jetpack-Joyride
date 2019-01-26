@@ -12,6 +12,7 @@
 #include "ring.h"
 #include "magnet.h"
 #include "top.h"
+#include "shield.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -25,6 +26,7 @@ GLFWwindow *window;
 Ground ground;
 Top ceiling;
 vector <Ring> ring;
+vector <Shield> shields;
 vector <Boomerang> boomerang;
 vector <Propulsion> propulsion;
 vector <Enemy1> enemy1;
@@ -33,6 +35,7 @@ vector <Lives> lives;
 Player player;
 vector <Coin> coins;
 vector <Magnet> magnets;
+int protect;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 
@@ -90,6 +93,8 @@ void draw() {
         boomerang[i].draw(VP);
     for(int i = 0; i < magnets.size(); ++i)
         magnets[i].draw(VP);
+    for(int i = 0; i < shields.size(); ++i)
+        shields[i].draw(VP);
 }
 /////////////////////////////
 float dist1(Point a, Point b)
@@ -171,15 +176,32 @@ void tick_input(GLFWwindow *window) {
     }
     for(int i = 0; i < magnets.size(); ++i)
         magnets[i].set_position(magnets[i].position.x + delta_x, magnets[i].position.y);
+    for(int i = 0; i < shields.size(); ++i)
+        shields[i].set_position(shields[i].position.x + delta_x, shields[i].position.y);
 }
+int life;
 int countdown;
 int boomerang_countdown;
+int shield_countdown;
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
     ground.tick();
     if(player.position.y >= 3.8){
         player.position.y = 3.8;
         player.speed = 0.0f;
+    }
+    if(protect > 0){
+        protect++;
+        protect = protect % 1000;
+    }
+    if(life > 0){
+        life++;
+        life = life % 30;
+    }
+    shield_countdown++;
+    shield_countdown = shield_countdown % 5000;
+    if(shield_countdown == 0){
+        shields.push_back(Shield(2, 3, COLOR_BACKGROUND));
     }
     countdown++;
     countdown = countdown % 3000;
@@ -190,6 +212,13 @@ void tick_elements() {
     }
     if(boomerang_countdown == 0){
         boomerang.push_back(Boomerang(10, 5, COLOR_BLACK));
+    }
+    for(int i = 0; i < shields.size(); ++i){
+        if(detect_collision_with_shield(shields[i], player)){
+            shields.erase(shields.begin() + i);
+            i = i - 1;
+            protect = 1;
+        }
     }
     for(int i = 0; i < coins.size(); ++i){
         if(coins[i].position.x <= -20)
@@ -241,14 +270,14 @@ void tick_elements() {
         }
     }
     for(int i = 0; i < enemy1.size(); ++i){
-        if(detect_collision_with_enemy1(enemy1[i], player))
+        if(detect_collision_with_enemy1(enemy1[i], player) && protect == 0)
         {
             enemy1.erase(enemy1.begin() + i);
             i = i - 1;
         }
     }
     for(int i = 0; i < enemy2.size(); ++i){
-        if(detect_collision_with_enemy2(enemy2[i], player)){
+        if(detect_collision_with_enemy2(enemy2[i], player) && protect == 0){
             enemy2.erase(enemy2.begin() + i);
             i = i - 1;
         }
@@ -258,8 +287,12 @@ void tick_elements() {
         lives[i].tick();
         if(detect_collision_with_lives(lives[i], player)){
             lives.erase(lives.begin() + i);
+            life = 1;
             i = i - 1;
         }
+    }
+    for(int i = 0; i < shields.size(); ++i){
+        shields[i].tick();
     }
     for(int i = 0; i < propulsion.size(); ++i){
         propulsion[i].tick();
@@ -272,7 +305,7 @@ void tick_elements() {
     for(int i = 0; i < boomerang.size(); ++i)
     {
         boomerang[i].tick();
-        if(detect_collision_with_boomerang(boomerang[i], player)){
+        if(detect_collision_with_boomerang(boomerang[i], player) && protect == 0){
             boomerang.erase(boomerang.begin() + i);
             i = i - 1;
             continue;
@@ -295,8 +328,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     player = Player(-4, -2, COLOR_GREEN);
     // Randomly placing coins
     int last_x = -5;
-    for(int i = 0; i < 10; ++i){
-        last_x = last_x + (rand() % 6) + 10;
+    for(int i = 0; i < 20; ++i){
+        last_x = last_x + (rand() % 4) + 10;
         float tmp_y = rand() % 4;
         coins.push_back(Coin(last_x, tmp_y, COLOR_RED, 0.2));
         coins.push_back(Coin(last_x + 0.5, tmp_y, COLOR_RED, 0.2));
@@ -318,29 +351,27 @@ void initGL(GLFWwindow *window, int width, int height) {
         coins.push_back(Coin(last_x + 1.5, tmp_y - 1, COLOR_RED, 0.2));
         coins.push_back(Coin(last_x + 2, tmp_y - 1, COLOR_RED, 0.2));
     }
+    shields.push_back(Shield(0, 0, COLOR_GREEN));
     last_x = 0.0f;
-    for(int i = 0; i < 4; ++i){
-        last_x = last_x + (rand() % 10) + 50;
-        ring.push_back(Ring(last_x, 0, COLOR_BLACK));    
+    for(int i = 0; i < 8; ++i){
+        last_x = last_x + (rand() % 10) + 30;
+        if(rand() % 2 && ring.size() != 4)
+            ring.push_back(Ring(last_x, 0, COLOR_BLACK));
+        else
+            magnets.push_back(Magnet(last_x, 2.6, COLOR_BLACK));
     }
     last_x = 2.0f;
-    for(int i = 0; i < 20; ++i){
+    for(int i = 0; i < 30; ++i){
         float ttt[] = {-0.6f, 0.8f, 1.5f, 2.2f, -1.3f};
-        last_x = last_x + (rand() % 10) + 7;
-        enemy1.push_back(Enemy1(last_x, ttt[rand() % 5], COLOR_BLACK));    
-    }
-    last_x = 5.0f;
-    for(int i = 0; i < 20; ++i){
-        last_x = last_x + (rand() % 12) + 10;
-        if(rand()%2)
-            enemy2.push_back(Enemy2(last_x, -1, COLOR_YELLOW));
-        else
-            enemy2.push_back(Enemy2(last_x, 3, COLOR_YELLOW));
-    }
-    last_x = -3;
-    for(int i = 0; i < 4; ++i){
-        last_x = last_x + (rand() % 10) + 50;
-        magnets.push_back(Magnet(last_x, 2.6, COLOR_BLACK));
+        last_x = last_x + (rand() % 8) + 5;
+        if(rand() % 2 && enemy1.size() != 15)
+            enemy1.push_back(Enemy1(last_x, ttt[rand() % 5], COLOR_BLACK));
+        else{
+            if(rand() % 2)
+                enemy2.push_back(Enemy2(last_x, -1, COLOR_YELLOW));
+            else
+                enemy2.push_back(Enemy2(last_x, 3, COLOR_YELLOW));
+        }    
     }
     enemy1.push_back(Enemy1(2, -1.3f, COLOR_BLACK));
     coins.push_back(Coin(1, 3, COLOR_RED, 0.2));
@@ -408,6 +439,13 @@ bool detect_collision(bounding_box_t a, bounding_box_t b) {
            (abs(a.y - b.y) * 2 < (a.height + b.height));
 }
 bool detect_collision_with_coin(Coin c, Player p)
+{
+    float DeltaX = c.position.x - max(p.position.x, min(c.position.x, p.position.x + p.breadth));
+    float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
+    return (DeltaX * DeltaX + DeltaY * DeltaY) < (c.radius * c.radius);
+}
+
+bool detect_collision_with_shield(Shield c, Player p)
 {
     float DeltaX = c.position.x - max(p.position.x, min(c.position.x, p.position.x + p.breadth));
     float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
@@ -570,10 +608,16 @@ bool detect_collision_with_lives(Lives l, Player p)
 {
     float DeltaX = l.x1 - max(p.position.x, min(l.x1, p.position.x + p.breadth));
     float DeltaY = l.y1 - min(p.position.y, max(l.y1, p.position.y - p.length));
-    int tmp = (DeltaX * DeltaX + DeltaY * DeltaY) < (l.radius * l.radius);
+    int tmp = (DeltaX * DeltaX + DeltaY * DeltaY) <= (l.radius * l.radius);
     DeltaX = l.x2 - max(p.position.x, min(l.x2, p.position.x + p.breadth));
     DeltaY = l.y2 - min(p.position.y, max(l.y2, p.position.y - p.length));
-    tmp = tmp | ((DeltaX * DeltaX + DeltaY * DeltaY) < (l.radius * l.radius));
+    tmp = tmp | ((DeltaX * DeltaX + DeltaY * DeltaY) <= (l.radius * l.radius));
+    if(p.position.x <= l.x1 && l.x1 <= p.position.x + p.breadth && p.position.y >= l.y1 && l.y1 >= p.position.x - p.length){
+        return true;
+    }
+    if(p.position.x <= l.x2 && l.x2 <= p.position.x + p.breadth && p.position.y >= l.y2 && l.y2 >= p.position.x - p.length){
+        return true;
+    }
     return tmp;
 }
 

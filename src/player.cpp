@@ -19,6 +19,8 @@ Player::Player(float x, float y, color_t color) {
         this->breadth, 0.0f, 0.0f, // triangle 2 : end
     };
     this->object = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, color, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, COLOR_BLUE, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, COLOR_MAGENTA, GL_FILL);
 }
 
 void Player::draw(glm::mat4 VP) {
@@ -30,7 +32,13 @@ void Player::draw(glm::mat4 VP) {
     Matrices.model *= (translate * rotate);
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
-    draw3DObject(this->object);
+    if(protect == 0)
+        draw3DObject(this->object);
+    else
+        draw3DObject(this->object1);
+    if(life > 0){
+        draw3DObject(this->object2);
+    }
 }
 
 void Player::set_position(float x, float y) {
@@ -38,8 +46,10 @@ void Player::set_position(float x, float y) {
 }
 
 bool Player::detect_collision_with_ground(){
-    if(ground.position.y >= this->position.y - this->length)
+    if(ground.position.y >= this->position.y - this->length){
+        this->position.y = ground.position.y + this->length;
         return true;
+    }
     return false;
 }
 

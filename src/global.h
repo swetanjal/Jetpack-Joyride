@@ -6,4 +6,6 @@ using namespace std;
 extern Ground ground;
 extern vector <Ring> ring;
 extern vector <Magnet> magnets;
+extern int protect;
+extern int life;
 extern float screen_zoom;

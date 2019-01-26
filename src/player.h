@@ -21,6 +21,8 @@ public:
     double speed;
 private:
     VAO *object;
+    VAO *object1;
+    VAO *object2;
 };
 
 #endif // PLAYER_H

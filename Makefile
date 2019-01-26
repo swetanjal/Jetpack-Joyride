@@ -555,6 +555,33 @@ src/ring.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/ring.cpp.s
 .PHONY : src/ring.cpp.s
 
+src/shield.o: src/shield.cpp.o
+
+.PHONY : src/shield.o
+
+# target to build an object file
+src/shield.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o
+.PHONY : src/shield.cpp.o
+
+src/shield.i: src/shield.cpp.i
+
+.PHONY : src/shield.i
+
+# target to preprocess a source file
+src/shield.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shield.cpp.i
+.PHONY : src/shield.cpp.i
+
+src/shield.s: src/shield.cpp.s
+
+.PHONY : src/shield.s
+
+# target to generate assembly for a file
+src/shield.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shield.cpp.s
+.PHONY : src/shield.cpp.s
+
 src/timer.o: src/timer.cpp.o
 
 .PHONY : src/timer.o
@@ -666,6 +693,9 @@ help:
 	@echo "... src/ring.o"
 	@echo "... src/ring.i"
 	@echo "... src/ring.s"
+	@echo "... src/shield.o"
+	@echo "... src/shield.i"
+	@echo "... src/shield.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"

@@ -76,7 +76,16 @@ void Player::tick() {
     //this->rotation += speed;
     // this->position.x -= speed;
     for(int i = 0; i < magnets.size(); ++i){
-        
+        if(abs(magnets[i].position.x - this->position.x) <= 0.5)
+        {
+            if(magnets[i].position.y > player.position.y)
+                player.position.y += 0.1;
+            if(magnets[i].position.y < player.position.y)
+                player.position.y -= 0.1;
+            //magnets.erase(magnets.begin() + i);
+            //i = i - 1;
+            return;
+        }
     }
     int inside = 0;
     for(int i = 0; i < ring.size(); ++i)

@@ -45,9 +45,9 @@ Magnet::Magnet(float x, float y, color_t color) {
 		vertex_buffer_data3[9 * i + 7] = this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
 		vertex_buffer_data3[9 * i + 8] = 0.0f;
 	}
-    this->object = create3DObject(GL_TRIANGLES, 3 * 2, vertex_buffer_data, color, GL_FILL);
-    this->object1 = create3DObject(GL_TRIANGLES, 3 * 2, vertex_buffer_data2, color, GL_FILL);
-    this->object2 = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data3, color, GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES, 3 * 2, vertex_buffer_data, COLOR_MAGNET, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, 3 * 2, vertex_buffer_data2, COLOR_MAGNET, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data3, COLOR_MAGNET, GL_FILL);
 }
 
 void Magnet::draw(glm::mat4 VP) {

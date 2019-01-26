@@ -42,9 +42,9 @@ Boomerang::Boomerang(float x, float y, color_t color) {
         -0.1f, 0.2f, 0.0f,
         -0.1f, -0.2f, 0.0f
     };
-    this->object1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, color, GL_FILL);
-    this->object2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data2, color, GL_FILL);
-    this->object3 = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data3, color, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data, COLOR_WOOD, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data2, COLOR_WOOD, GL_FILL);
+    this->object3 = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data3, COLOR_WOOD, GL_FILL);
 }
 
 void Boomerang::draw(glm::mat4 VP) {

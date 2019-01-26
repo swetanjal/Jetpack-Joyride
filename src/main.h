@@ -93,6 +93,10 @@ extern const color_t COLOR_ORANGERED;
 extern const color_t COLOR_METALLIC_GOLD;
 extern const color_t COLOR_OLD_GOLD;
 extern const color_t COLOR_GOLDEN_BROWN;
+extern const color_t COLOR_WOOD;
+extern const color_t COLOR_GREY_RING;
+extern const color_t COLOR_MAGNET;
+extern const color_t COLOR_OLIVE;
 #include "player.h"
 #include "coin.h"
 #include "enemy1.h"

@@ -403,7 +403,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     ground       = Ground(-24, -3, COLOR_BLACK, 10, 400);
     ceiling = Top(-24, 4, COLOR_BLACK, 0.2, 400);
     player = Player(-4, -2, COLOR_GREEN);
-    dragon = Dragon(250, 0, COLOR_BLACK);
+    dragon = Dragon(250, 0, COLOR_OLIVE);
     // Randomly placing coins
     int last_x = -5;
     for(int i = 0; i < 20; ++i){

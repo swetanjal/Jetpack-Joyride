@@ -31,7 +31,7 @@ Water::Water(float x, float y, color_t color) {
         if((i % 90) <= 45)
             this->object[i] = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data[i], COLOR_LIGHT_BLUE, GL_FILL);
         else
-            this->object[i] = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data[i], COLOR_BACKGROUND, GL_FILL);
+            this->object[i] = create3DObject(GL_TRIANGLES, 1*3, vertex_buffer_data[i], COLOR_LIGHT_BLUE, GL_FILL);
     }
 }
 

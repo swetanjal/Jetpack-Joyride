@@ -54,7 +54,7 @@ Enemy2::Enemy2(float x, float y, color_t color) {
     vertex_buffer_data[18 * N + 9] = this->radius + (this->dist - 2 * this->radius); vertex_buffer_data[18 * N + 10] = this->delta * 1.0f; vertex_buffer_data[18 * N + 11] = 0.0f;
     vertex_buffer_data[18 * N + 12] = this->radius + (this->dist - 2 * this->radius);  vertex_buffer_data[18 * N + 13] = 0.0f; vertex_buffer_data[18 * N + 14] = 0.0f;
     vertex_buffer_data[18 * N + 15] = this->radius * 1.0f; vertex_buffer_data[18 * N + 16] = 0.0f; vertex_buffer_data[18 * N + 17] = 0.0f;
-    this->object = create3DObject(GL_TRIANGLES, 3 * 2 * N + 3 * 2, vertex_buffer_data, color, GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES, 3 * 2 * N + 3 * 2, vertex_buffer_data, COLOR_YELLOW, GL_FILL);
 }
 
 void Enemy2::draw(glm::mat4 VP) {

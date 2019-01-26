@@ -51,7 +51,7 @@ Lives::Lives(float x, float y, color_t color) {
     vertex_buffer_data[18 * N + 3] = this->radius + this->dist - 0.059;  vertex_buffer_data[18 * N + 4] = -0.2f; vertex_buffer_data[18 * N + 5] = 0.0f;
     vertex_buffer_data[18 * N + 6] = this->dist / 2; vertex_buffer_data[18 * N + 7] = (2 * radius) * -1.0f; vertex_buffer_data[18 * N + 8] = 0.0f;
 
-    this->object = create3DObject(GL_TRIANGLES, 3 * N + 3 * N + 3, vertex_buffer_data, color, GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES, 3 * N + 3 * N + 3, vertex_buffer_data, COLOR_MAGENTA, GL_FILL);
 }
 
 void Lives::draw(glm::mat4 VP) {

@@ -13,6 +13,7 @@
 #include "magnet.h"
 #include "top.h"
 #include "shield.h"
+#include "ice.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -26,6 +27,7 @@ GLFWwindow *window;
 Ground ground;
 Top ceiling;
 vector <Ring> ring;
+vector <Ice> ice;
 vector <Shield> shields;
 vector <Boomerang> boomerang;
 vector <Propulsion> propulsion;
@@ -95,6 +97,8 @@ void draw() {
         magnets[i].draw(VP);
     for(int i = 0; i < shields.size(); ++i)
         shields[i].draw(VP);
+    for(int i = 0; i < ice.size(); ++i)
+        ice[i].draw(VP);
 }
 /////////////////////////////
 float dist1(Point a, Point b)
@@ -116,10 +120,12 @@ int insideRing(Ring r){
     return fl;
 }
 ////////////////////////////
+int countdown_ice;
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
+    int up = glfwGetKey(window, GLFW_KEY_UP);
     float delta_x = 0.0f;
     float delta_y = 0.0f;
     if (left) {
@@ -153,6 +159,10 @@ void tick_input(GLFWwindow *window) {
     {
         player.speed = 0.0f;
     }
+    if(up && countdown_ice == 0){
+        countdown_ice = 1;
+        ice.push_back(Ice(player.position.x + player.breadth, player.position.y - player.length / 2, COLOR_BACKGROUND));
+    }
     ground.set_position(ground.position.x + delta_x, ground.position.y);
     for(int i = 0; i < coins.size(); ++i)
         coins[i].set_position(coins[i].position.x + delta_x, coins[i].position.y);
@@ -183,9 +193,42 @@ int life;
 int countdown;
 int boomerang_countdown;
 int shield_countdown;
+
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
+
+    for(int i = 0; i < ice.size(); ++i){
+        int destroyed = 0;
+        for(int j = 0; j < enemy1.size(); ++j){
+            if(destroyed == 1)
+                break;
+            if(detect_collision_enemy1_ice(enemy1[j], ice[i])){
+                enemy1.erase(enemy1.begin() + j);
+                ice.erase(ice.begin() + i);
+                destroyed = 1;
+                j = j - 1;
+            }
+        }
+        for(int j = 0; j < enemy2.size(); ++j){
+            if(destroyed == 1){
+                break;
+            }
+            if(detect_collision_enemy2_ice(enemy2[j], ice[i])){
+                enemy2.erase(enemy2.begin() + j);
+                ice.erase(ice.begin() + i);
+                destroyed = 1;
+                j = j - 1; 
+            }
+        }
+        if(destroyed){
+            i = i - 1;
+        }
+    }
     ground.tick();
+    if(countdown_ice > 0){
+        countdown_ice++;
+        countdown_ice = countdown_ice % 500;
+    }
     if(player.position.y >= 3.8){
         player.position.y = 3.8;
         player.speed = 0.0f;
@@ -258,6 +301,14 @@ void tick_elements() {
     for(int i = 0; i < magnets.size(); ++i){
         if(magnets[i].position.x <= -20){
             magnets.erase(magnets.begin() + i);
+            i = i - 1;
+        }
+    }
+
+    for(int i = 0; i < ice.size(); ++i){
+        ice[i].tick();
+        if(ice[i].position.x >= 20){
+            ice.erase(ice.begin() + i);
             i = i - 1;
         }
     }
@@ -513,6 +564,46 @@ bool detect_collision_with_enemy2(Enemy2 e, Player p)
     if(tmp){
         return true;
     }
+    return false;
+}
+
+bool detect_collision_enemy1_ice(Enemy1 e, Ice i)
+{
+    float dist = (e.x2 - i.position.x) * (e.x2 - i.position.x) + (e.y2 - i.position.y) * (e.y2 - i.position.y);
+    dist = sqrt(dist);
+    if(dist <= (i.radius + e.radius))
+        return true;
+    dist = (e.x1 - i.position.x) * (e.x1 - i.position.x) + (e.y1 - i.position.y) * (e.y1 - i.position.y);
+    dist = sqrt(dist);
+    if(dist <= (i.radius + e.radius))
+        return true;
+    Point a = {e.x1, e.y1}; Point b = {e.x2, e.y2};
+    Point c = {i.position.x, i.position.y + i.radius}; Point d = {i.position.x, i.position.y - i.radius};
+    if(doIntersect(a, b, c, d))
+        return true;
+    c = {i.position.x - i.radius, i.position.y}; d = {i.position.x + i.radius, i.position.y};
+    if(doIntersect(a, b, c, d))
+        return true;
+    return false;
+}
+
+bool detect_collision_enemy2_ice(Enemy2 e, Ice i)
+{
+    float dist = (e.x2 - i.position.x) * (e.x2 - i.position.x) + (e.y2 - i.position.y) * (e.y2 - i.position.y);
+    dist = sqrt(dist);
+    if(dist <= (i.radius + e.radius))
+        return true;
+    dist = (e.x1 - i.position.x) * (e.x1 - i.position.x) + (e.y1 - i.position.y) * (e.y1 - i.position.y);
+    dist = sqrt(dist);
+    if(dist <= (i.radius + e.radius))
+        return true;
+    Point a = {e.x1, e.y1}; Point b = {e.x2, e.y2};
+    Point c = {i.position.x, i.position.y + i.radius}; Point d = {i.position.x, i.position.y - i.radius};
+    if(doIntersect(a, b, c, d))
+        return true;
+    c = {i.position.x - i.radius, i.position.y}; d = {i.position.x + i.radius, i.position.y};
+    if(doIntersect(a, b, c, d))
+        return true;
     return false;
 }
 

@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/input.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o"

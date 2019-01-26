@@ -26,7 +26,19 @@ Coin::Coin(float x, float y, color_t color, float r) {
 		vertex_buffer_data[9 * i + 7] = this->radius * 1.0f * sin(theta * pi * 1.0f / 180);
 		vertex_buffer_data[9 * i + 8] = 0.0f;
 	}
-    this->object = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data, color, GL_FILL);
+    int random = rand() % 3;
+    if(random == 0){
+        this->object = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data, COLOR_METALLIC_GOLD, GL_FILL);
+        this->points = 10;
+    }
+    else if(random == 1){
+        this->object = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data, COLOR_GOLDEN_BROWN, GL_FILL);
+        this->points = 20;
+    }
+    else{
+        this->object = create3DObject(GL_TRIANGLES, 3 * N, vertex_buffer_data, COLOR_OLD_GOLD, GL_FILL);
+        this->points = 50;
+    }
 }
 
 void Coin::draw(glm::mat4 VP) {

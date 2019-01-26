@@ -88,6 +88,11 @@ extern const color_t COLOR_BACKGROUND;
 extern const color_t COLOR_YELLOW;
 extern const color_t COLOR_BLUE;
 extern const color_t COLOR_MAGENTA;
+extern const color_t COLOR_LIGHT_BLUE;
+extern const color_t COLOR_ORANGERED;
+extern const color_t COLOR_METALLIC_GOLD;
+extern const color_t COLOR_OLD_GOLD;
+extern const color_t COLOR_GOLDEN_BROWN;
 #include "player.h"
 #include "coin.h"
 #include "enemy1.h"
@@ -95,12 +100,15 @@ extern const color_t COLOR_MAGENTA;
 #include "lives.h"
 #include "boomerang.h"
 #include "shield.h"
+#include "ice.h"
 bool detect_collision_with_coin(Coin c, Player p);
 bool detect_collision_with_enemy1(Enemy1 e, Player p);
 bool detect_collision_with_enemy2(Enemy2 e, Player p);
 bool detect_collision_with_lives(Lives l, Player p);
 bool detect_collision_with_boomerang(Boomerang b, Player p);
 bool detect_collision_with_shield(Shield c, Player p);
+bool detect_collision_enemy1_ice(Enemy1 e, Ice i);
+bool detect_collision_enemy2_ice(Enemy2 e, Ice i);
 bool doIntersect(Point p1, Point q1, Point p2, Point q2);
 float orientation(Point p, Point q, Point r);
 bool onSegment(Point p, Point q, Point r);

@@ -1,23 +1,22 @@
 #include "main.h"
 #define GLM_ENABLE_EXPERIMENTAL
-#ifndef COIN_H
-#define COIN_H
+#ifndef ICE_H
+#define ICE_H
 
 
-class Coin {
+class Ice {
 public:
-    Coin() {}
-    Coin(float x, float y, color_t color, float r);
+    Ice() {}
+    Ice(float x, float y, color_t color);
     glm::vec3 position;
     float rotation;
     float radius;
-    int points;
     void draw(glm::mat4 VP);
     void set_position(float x, float y);
     void tick();
     double speed;
 private:
-    VAO *object;
+    VAO *object[360];
 };
 
 #endif // BALL_H

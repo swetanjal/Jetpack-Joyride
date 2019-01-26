@@ -10,7 +10,7 @@ Propulsion::Propulsion(float x, float y, color_t color) {
     this->speed = 0.05;
     // Our vertices. Three consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
     // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-    this->delta = 0.1;
+    this->delta = 0.035;
     this->length = 0.5;
     static const GLfloat vertex_buffer_data[] = {
        0.0f, 0.0f, 0.0f,
@@ -20,8 +20,10 @@ Propulsion::Propulsion(float x, float y, color_t color) {
        0.0f, 0.0f, 0.0f,
        this->delta, -this->length, 0.0f
     };
-
-    this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color, GL_FILL);
+    if(rand() % 9 == 0)
+        this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, COLOR_ORANGERED, GL_FILL);
+    else
+        this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color, GL_FILL);
 }
 
 void Propulsion::draw(glm::mat4 VP) {

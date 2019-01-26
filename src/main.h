@@ -101,6 +101,8 @@ extern const color_t COLOR_GOLDEN_BROWN;
 #include "boomerang.h"
 #include "shield.h"
 #include "ice.h"
+#include "water.h"
+#include "dragon.h"
 bool detect_collision_with_coin(Coin c, Player p);
 bool detect_collision_with_enemy1(Enemy1 e, Player p);
 bool detect_collision_with_enemy2(Enemy2 e, Player p);
@@ -109,6 +111,8 @@ bool detect_collision_with_boomerang(Boomerang b, Player p);
 bool detect_collision_with_shield(Shield c, Player p);
 bool detect_collision_enemy1_ice(Enemy1 e, Ice i);
 bool detect_collision_enemy2_ice(Enemy2 e, Ice i);
+bool detect_collision_with_dragon(Dragon d, Player p);
+bool detect_collision_with_water(Water c, Player p);
 bool doIntersect(Point p1, Point q1, Point p2, Point q2);
 float orientation(Point p, Point q, Point r);
 bool onSegment(Point p, Point q, Point r);

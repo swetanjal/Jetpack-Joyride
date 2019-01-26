@@ -5,6 +5,7 @@ CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ball.cpp
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ball.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ice.h
@@ -13,10 +14,12 @@ CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/boomerang.cpp
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/ice.h
@@ -25,10 +28,12 @@ CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/coin.cpp
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/ice.h
@@ -37,10 +42,12 @@ CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/coin.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/color.cpp
+CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/ice.h
@@ -49,9 +56,28 @@ CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/color.cpp.o: src/water.h
+
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/boomerang.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/dragon.cpp
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/dragon.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/enemy1.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/global.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/ground.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/ice.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/magnet.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/main.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/player.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/ring.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/enemy1.cpp
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/enemy2.h
@@ -61,9 +87,11 @@ CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/enemy2.cpp
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/enemy2.h
@@ -73,9 +101,11 @@ CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/ground.cpp
@@ -86,9 +116,11 @@ CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/ice.cpp
@@ -98,9 +130,11 @@ CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/ice.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/global.h
@@ -113,9 +147,11 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/ice.h
@@ -125,9 +161,11 @@ CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/lives.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/ice.h
@@ -138,9 +176,11 @@ CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/main.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/magnet.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/global.h
@@ -156,9 +196,11 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/shield.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/timer.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/top.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/ice.h
@@ -168,9 +210,11 @@ CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/nonedit.cpp
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/ice.h
@@ -180,9 +224,11 @@ CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/other_handlers.cpp
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/global.h
@@ -195,9 +241,11 @@ CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.cpp
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/player.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/ice.h
@@ -208,9 +256,11 @@ CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/propulsion.cpp
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/propulsion.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/propulsion.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/ice.h
@@ -220,9 +270,11 @@ CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/ring.cpp
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/ice.h
@@ -232,12 +284,14 @@ CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/player.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/shield.cpp
 CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o: src/water.h
 
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o: src/timer.cpp
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o: src/timer.h
 
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/boomerang.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/dragon.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/enemy1.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/enemy2.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/ice.h
@@ -248,4 +302,19 @@ CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/ring.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/shield.h
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/top.cpp
 CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/top.h
+CMakeFiles/graphics_asgn1.dir/src/top.cpp.o: src/water.h
+
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/boomerang.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/coin.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/dragon.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/enemy1.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/enemy2.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/ice.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/lives.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/main.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/player.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/ring.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/shield.h
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/water.cpp
+CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: src/water.h
 

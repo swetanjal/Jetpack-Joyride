@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn1.dir/src/boomerang.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/coin.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/color.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/enemy1.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/enemy2.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/ground.cpp.o"
@@ -19,6 +20,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn1.dir/src/shield.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/top.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/water.cpp.o"
   "graphics_asgn1.pdb"
   "graphics_asgn1"
 )

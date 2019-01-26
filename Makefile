@@ -231,6 +231,33 @@ src/color.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
+src/dragon.o: src/dragon.cpp.o
+
+.PHONY : src/dragon.o
+
+# target to build an object file
+src/dragon.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.o
+.PHONY : src/dragon.cpp.o
+
+src/dragon.i: src/dragon.cpp.i
+
+.PHONY : src/dragon.i
+
+# target to preprocess a source file
+src/dragon.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.i
+.PHONY : src/dragon.cpp.i
+
+src/dragon.s: src/dragon.cpp.s
+
+.PHONY : src/dragon.s
+
+# target to generate assembly for a file
+src/dragon.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/dragon.cpp.s
+.PHONY : src/dragon.cpp.s
+
 src/enemy1.o: src/enemy1.cpp.o
 
 .PHONY : src/enemy1.o
@@ -663,6 +690,33 @@ src/top.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/top.cpp.s
 .PHONY : src/top.cpp.s
 
+src/water.o: src/water.cpp.o
+
+.PHONY : src/water.o
+
+# target to build an object file
+src/water.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/water.cpp.o
+.PHONY : src/water.cpp.o
+
+src/water.i: src/water.cpp.i
+
+.PHONY : src/water.i
+
+# target to preprocess a source file
+src/water.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/water.cpp.i
+.PHONY : src/water.cpp.i
+
+src/water.s: src/water.cpp.s
+
+.PHONY : src/water.s
+
+# target to generate assembly for a file
+src/water.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/water.cpp.s
+.PHONY : src/water.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -684,6 +738,9 @@ help:
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/dragon.o"
+	@echo "... src/dragon.i"
+	@echo "... src/dragon.s"
 	@echo "... src/enemy1.o"
 	@echo "... src/enemy1.i"
 	@echo "... src/enemy1.s"
@@ -732,6 +789,9 @@ help:
 	@echo "... src/top.o"
 	@echo "... src/top.i"
 	@echo "... src/top.s"
+	@echo "... src/water.o"
+	@echo "... src/water.i"
+	@echo "... src/water.s"
 .PHONY : help
 
 

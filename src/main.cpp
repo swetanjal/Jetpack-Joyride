@@ -14,6 +14,8 @@
 #include "top.h"
 #include "shield.h"
 #include "ice.h"
+#include "dragon.h"
+#include "water.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -25,8 +27,10 @@ GLFWwindow *window;
 **************************/
 
 Ground ground;
+Dragon dragon;
 Top ceiling;
 vector <Ring> ring;
+vector <Water> water;
 vector <Ice> ice;
 vector <Shield> shields;
 vector <Boomerang> boomerang;
@@ -40,7 +44,7 @@ vector <Magnet> magnets;
 int protect;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-
+float maxi = 0.0f;
 Timer t60(1.0 / 60);
 
 /* Render the scene with openGL */
@@ -99,6 +103,9 @@ void draw() {
         shields[i].draw(VP);
     for(int i = 0; i < ice.size(); ++i)
         ice[i].draw(VP);
+    for(int i = 0; i < water.size(); ++i)
+        water[i].draw(VP);
+    dragon.draw(VP);
 }
 /////////////////////////////
 float dist1(Point a, Point b)
@@ -188,6 +195,8 @@ void tick_input(GLFWwindow *window) {
         magnets[i].set_position(magnets[i].position.x + delta_x, magnets[i].position.y);
     for(int i = 0; i < shields.size(); ++i)
         shields[i].set_position(shields[i].position.x + delta_x, shields[i].position.y);
+    maxi += delta_x;
+    dragon.set_position(dragon.position.x + delta_x, dragon.position.y);
 }
 int life;
 int countdown;
@@ -196,7 +205,24 @@ int shield_countdown;
 
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
-
+    //cout << maxi << endl;
+    if(detect_collision_with_dragon(dragon, player)){
+        cout << "Game Over! You lost!\n";
+        quit(window);
+    }
+    if(player.position.x - dragon.position.x > 5)
+    {
+        cout << "You Win!\n";
+        quit(window);
+    }
+    dragon.tick();
+    for(int i = 0; i < water.size(); ++i){
+        water[i].tick();
+        if(detect_collision_with_water(water[i], player) && protect == 0){
+            water.erase(water.begin() + i);
+            i = i - 1;
+        }
+    }
     for(int i = 0; i < ice.size(); ++i){
         int destroyed = 0;
         for(int j = 0; j < enemy1.size(); ++j){
@@ -373,10 +399,11 @@ void tick_elements() {
 void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
-    
-    ground       = Ground(-24, -3, COLOR_BLACK, 10, 200);
-    ceiling = Top(-24, 4, COLOR_BLACK, 0.2, 200);
+    //water.push_back(Water(0, 0, COLOR_BACKGROUND));
+    ground       = Ground(-24, -3, COLOR_BLACK, 10, 400);
+    ceiling = Top(-24, 4, COLOR_BLACK, 0.2, 400);
     player = Player(-4, -2, COLOR_GREEN);
+    dragon = Dragon(250, 0, COLOR_BLACK);
     // Randomly placing coins
     int last_x = -5;
     for(int i = 0; i < 20; ++i){
@@ -405,7 +432,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     shields.push_back(Shield(0, 0, COLOR_GREEN));
     last_x = 0.0f;
     for(int i = 0; i < 8; ++i){
-        last_x = last_x + (rand() % 10) + 30;
+        last_x = last_x + (rand() % 10) + 25;
         if(rand() % 2 && ring.size() != 4)
             ring.push_back(Ring(last_x, 0, COLOR_BLACK));
         else
@@ -490,6 +517,13 @@ bool detect_collision(bounding_box_t a, bounding_box_t b) {
            (abs(a.y - b.y) * 2 < (a.height + b.height));
 }
 bool detect_collision_with_coin(Coin c, Player p)
+{
+    float DeltaX = c.position.x - max(p.position.x, min(c.position.x, p.position.x + p.breadth));
+    float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
+    return (DeltaX * DeltaX + DeltaY * DeltaY) < (c.radius * c.radius);
+}
+
+bool detect_collision_with_water(Water c, Player p)
 {
     float DeltaX = c.position.x - max(p.position.x, min(c.position.x, p.position.x + p.breadth));
     float DeltaY = c.position.y - min(p.position.y, max(c.position.y, p.position.y - p.length));
@@ -692,6 +726,35 @@ bool detect_collision_with_boomerang(Boomerang b, Player p)
             return true;
         }
     }
+    return false;
+}
+bool detect_collision_with_dragon(Dragon d, Player p)
+{
+    Point a = {p.position.x, p.position.y};
+    Point b = {p.position.x + p.breadth, p.position.y};
+
+    Point c = {d.position.x, d.position.y};
+    Point x = {d.position.x, d.position.y - d.length};
+
+    if(doIntersect(a, b, c, x))
+        return true;
+    c = {d.position.x + d.breadth, d.position.y};
+    x = {d.position.x + d.breadth, d.position.y - d.length};
+    if(doIntersect(a, b, c, x))
+        return true;
+
+    a = {p.position.x, p.position.y - p.length};
+    b = {p.position.x + p.breadth, p.position.y - p.length};
+
+    c = {d.position.x, d.position.y};
+    x = {d.position.x, d.position.y - d.length};
+
+    if(doIntersect(a, b, c, x))
+        return true;
+    c = {d.position.x + d.breadth, d.position.y};
+    x = {d.position.x + d.breadth, d.position.y - d.length};
+    if(doIntersect(a, b, c, x))
+        return true;
     return false;
 }
 

@@ -43,7 +43,9 @@ void keyboard(GLFWwindow *window, int key, int scancode, int action, int mods) {
     } else if (action == GLFW_PRESS) {
         switch (key) {
         case GLFW_KEY_ESCAPE:
+            cout << "You aborted the game!\n";
             quit(window);
+            
             break;
         default:
             break;

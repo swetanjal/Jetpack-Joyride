@@ -43,7 +43,7 @@ void Dragon::set_position(float x, float y) {
 
 void Dragon::tick() {
     this->timer += 1;
-    this->timer = this -> timer % 250;
+    this->timer = this -> timer % 190;
     if(this->timer == 0 && sqrt((player.position.x - this->position.x) * (player.position.x - this->position.x)) <= 5){
         water.push_back(Water(this->position.x, this->position.y, COLOR_BLACK));
         water[water.size() - 1].speedx = -0.02f * (this->position.x - player.position.x);

@@ -25,7 +25,9 @@ GLFWwindow *window;
 /**************************
 * Customizable functions *
 **************************/
-
+long long score = 0;
+long long chance = 0;
+long long penalty = 0.0f;
 Ground ground;
 Dragon dragon;
 Top ceiling;
@@ -205,14 +207,19 @@ int shield_countdown;
 
 void tick_elements() {
     glfwSetScrollCallback(window, scroll_callback);
-    //cout << maxi << endl;
+    cout << "Score: " << score << "     Chances: " << chance << endl;
+    penalty++;
     if(detect_collision_with_dragon(dragon, player)){
         cout << "Game Over! You lost!\n";
+        float s = score - (penalty * 1.0f / 10000);
+        cout << "Your final score is: " << s << endl;
         quit(window);
     }
     if(player.position.x - dragon.position.x > 5)
     {
         cout << "You Win!\n";
+        float s = score - (penalty * 1.0f / 10000);
+        cout << "Your final score is: " << s << endl;
         quit(window);
     }
     dragon.tick();
@@ -221,6 +228,14 @@ void tick_elements() {
         if(detect_collision_with_water(water[i], player) && protect == 0){
             water.erase(water.begin() + i);
             i = i - 1;
+            chance--;
+            if(chance < 0)
+            {
+                cout << "Game Over! You lost!\n";
+                float s = score - (penalty * 1.0f / 10000);
+                cout << "Your final score is: " << s << endl;
+                quit(window);
+            }
         }
     }
     for(int i = 0; i < ice.size(); ++i){
@@ -247,6 +262,7 @@ void tick_elements() {
             }
         }
         if(destroyed){
+            score += 20;
             i = i - 1;
         }
     }
@@ -342,6 +358,7 @@ void tick_elements() {
         coins[i].tick();
     for(int i = 0; i < coins.size(); ++i){
         if(detect_collision_with_coin(coins[i], player)){
+            score += coins[i].points;
             coins.erase(coins.begin() + i);
             i = i - 1;
         }
@@ -350,12 +367,14 @@ void tick_elements() {
         if(detect_collision_with_enemy1(enemy1[i], player) && protect == 0)
         {
             enemy1.erase(enemy1.begin() + i);
+            score -= 50;
             i = i - 1;
         }
     }
     for(int i = 0; i < enemy2.size(); ++i){
         if(detect_collision_with_enemy2(enemy2[i], player) && protect == 0){
             enemy2.erase(enemy2.begin() + i);
+            score -= 25;
             i = i - 1;
         }
         enemy2[i].tick();
@@ -364,6 +383,7 @@ void tick_elements() {
         lives[i].tick();
         if(detect_collision_with_lives(lives[i], player)){
             lives.erase(lives.begin() + i);
+            chance++;
             life = 1;
             i = i - 1;
         }
@@ -384,6 +404,7 @@ void tick_elements() {
         boomerang[i].tick();
         if(detect_collision_with_boomerang(boomerang[i], player) && protect == 0){
             boomerang.erase(boomerang.begin() + i);
+            score -= 100;
             i = i - 1;
             continue;
         }
